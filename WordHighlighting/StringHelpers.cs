@@ -48,7 +48,7 @@ namespace WordHighlighter
                 return 0;
             
             for (int i = startIndex;
-                i < startIndex + count && i + value.Length <= text.Length;
+                i + value.Length <= startIndex + count;
                 i++)
             {
                 if (Compare(text, value, i))

@@ -13,6 +13,12 @@ namespace WordHighlighter
         }
 
         [Test()]
+        public void TestOutOfCountRange()
+        {
+            Assert.AreEqual(-1, StringHelpers.IndexOf("aab", "ab", 0, 2));
+        }
+
+        [Test()]
         public void TestNegative()
         {
             Assert.AreEqual(-1, StringHelpers.IndexOf("aabbcc", "xx", 0, 6));
