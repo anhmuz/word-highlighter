@@ -14,7 +14,8 @@ namespace WordHighlighter
                 ConsoleColor.Gray, ConsoleColor.Green, ConsoleColor.Magenta,
                 ConsoleColor.Red, ConsoleColor.White, ConsoleColor.Yellow,
                 ConsoleColor.DarkMagenta, ConsoleColor.DarkCyan};
-            WordHighlighter wh = new WordHighlighter();
+            var output = new ConsoleOutput();
+            WordHighlighter wh = new WordHighlighter(output);
             for (int i = 0; i < words.Length; i++)
             {
                 ColoredWord cw = new ColoredWord(words[i],
@@ -25,6 +26,7 @@ namespace WordHighlighter
             string text = Console.ReadLine();
 
             wh.Print(text);
+            Console.WriteLine();
             Console.WriteLine("The end");
         }
     }

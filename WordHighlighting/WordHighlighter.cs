@@ -6,13 +6,23 @@ namespace WordHighlighter
     public class WordHighlighter
     {
         private List<ColoredWord> _coloredWords = new List<ColoredWord>();
+        private readonly IOutput _output;
+
+        public interface IOutput
+        {
+            void Print(string fragment, ConsoleColor color);
+            void Print(string fragment);
+        }
+
+        public WordHighlighter(IOutput output)
+        {
+            _output = output;
+        }
 
         public void Add(ColoredWord cw)
         {
             _coloredWords.Add(cw);
         }
-
-
 
         public void Print(string text)
         {
@@ -26,12 +36,10 @@ namespace WordHighlighter
                         StringHelpers.IndexOf(
                             text, cw.Word, i, cw.Word.Length) != -1)
                     {
-                        Console.Write(text.Substring
+                        _output.Print(text.Substring
                             (i - numberOfUncolouredLetters,
                             numberOfUncolouredLetters));
-                        Console.ForegroundColor = cw.Color;
-                        Console.Write(cw.Word);
-                        Console.ResetColor();
+                        _output.Print(cw.Word, cw.Color);
                         numberOfUncolouredLetters = 0;
                         isPrinted = true;
                         i += cw.Word.Length - 1;
@@ -44,7 +52,7 @@ namespace WordHighlighter
                 }
             }
 
-            Console.WriteLine(
+            _output.Print(
                 text.Substring(text.Length - numberOfUncolouredLetters));
         }
     }

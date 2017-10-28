@@ -44,6 +44,7 @@
     <Compile Include="StringHelpers.cs" />
     <Compile Include="TestCompare.cs" />
     <Compile Include="TestSplit.cs" />
+    <Compile Include="ConsoleOutput.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
