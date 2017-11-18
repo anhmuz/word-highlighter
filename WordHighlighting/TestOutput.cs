@@ -6,7 +6,7 @@ namespace WordHighlighter
 {
     public class TestOutput: WordHighlighter.IOutput
     {
-        private List<TestTextFragment> _expectedTextFragments;
+        private readonly List<TestTextFragment> _expectedTextFragments;
         private int _currentIndex = 0;
 
         public int CurrentIndex
