@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace WordHighlighter
 {
@@ -6,10 +7,9 @@ namespace WordHighlighter
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("Enter words: ");
-            string listOfWords = Console.ReadLine();
-            const char delimiter = ' ';
-            string[] words = listOfWords.Split(delimiter);
+            string text = File.ReadAllText(args[0]);
+            string[] words = StringHelpers.Split(text,
+                StringHelpers.StringSplitOptions.RemoveEmptyEntries);
             ConsoleColor[] colors = {ConsoleColor.Blue, ConsoleColor.Cyan,
                 ConsoleColor.Gray, ConsoleColor.Green, ConsoleColor.Magenta,
                 ConsoleColor.Red, ConsoleColor.White, ConsoleColor.Yellow,
@@ -23,9 +23,8 @@ namespace WordHighlighter
                 wh.Add(cw);
             }
             Console.WriteLine("Enter text: ");
-            string text = Console.ReadLine();
-
-            wh.Print(text);
+            string line = Console.ReadLine();
+            wh.Print(line);
             Console.WriteLine();
             Console.WriteLine("The end");
         }
