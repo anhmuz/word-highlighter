@@ -52,8 +52,11 @@ namespace WordHighlighter
                 }
             }
 
-            _output.Print(
-                text.Substring(text.Length - numberOfUncolouredLetters));
+            if (numberOfUncolouredLetters != 0)
+            {
+                _output.Print(
+                    text.Substring(text.Length - numberOfUncolouredLetters));
+            }
         }
     }
 }

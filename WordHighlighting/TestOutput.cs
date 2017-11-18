@@ -24,6 +24,7 @@ namespace WordHighlighter
 
         public void Print(string fragment, ConsoleColor color)
         {
+            Assert.Greater(_expectedTextFragments.Count, _currentIndex);
             Assert.AreEqual(_expectedTextFragments[_currentIndex].Fragment,
                 fragment);
             Assert.AreEqual(_expectedTextFragments[_currentIndex].Color,
@@ -33,6 +34,7 @@ namespace WordHighlighter
 
         public void Print(string fragment)
         {
+            Assert.Greater(_expectedTextFragments.Count, _currentIndex);
             Assert.AreEqual(_expectedTextFragments[_currentIndex].Fragment,
                 fragment);
             Assert.AreEqual(_expectedTextFragments[_currentIndex].Color,
