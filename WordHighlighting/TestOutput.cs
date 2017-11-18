@@ -37,8 +37,7 @@ namespace WordHighlighter
             Assert.Greater(_expectedTextFragments.Count, _currentIndex);
             Assert.AreEqual(_expectedTextFragments[_currentIndex].Fragment,
                 fragment);
-            Assert.AreEqual(_expectedTextFragments[_currentIndex].Color,
-                ConsoleColor.White);
+            Assert.Null(_expectedTextFragments[_currentIndex].Color);
             ++_currentIndex;
         }
     }

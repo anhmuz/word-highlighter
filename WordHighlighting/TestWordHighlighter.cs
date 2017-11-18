@@ -18,11 +18,11 @@ namespace WordHighlighter
                 "aaVadymaaAnhelinaaa",
                 new List<TestTextFragment>
                 {
-                    new TestTextFragment("aa", ConsoleColor.White),
+                    new TestTextFragment("aa"),
                     new TestTextFragment("Vadym", ConsoleColor.Red),
-                    new TestTextFragment("aa", ConsoleColor.White),
+                    new TestTextFragment("aa"),
                     new TestTextFragment("Anhelina", ConsoleColor.Blue),
-                    new TestTextFragment("aa", ConsoleColor.White)
+                    new TestTextFragment("aa")
                 }
             );
         }
@@ -39,11 +39,11 @@ namespace WordHighlighter
                 "aaVadymaaAnhelinaaaTux",
                 new List<TestTextFragment>
                 {
-                    new TestTextFragment("aa", ConsoleColor.White),
+                    new TestTextFragment("aa"),
                     new TestTextFragment("Vadym", ConsoleColor.Red),
-                    new TestTextFragment("aa", ConsoleColor.White),
+                    new TestTextFragment("aa"),
                     new TestTextFragment("Anhelina", ConsoleColor.Blue),
-                    new TestTextFragment("aa", ConsoleColor.White),
+                    new TestTextFragment("aa"),
                     new TestTextFragment("Tux", ConsoleColor.Yellow)
                 }
             );

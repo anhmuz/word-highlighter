@@ -4,16 +4,21 @@ namespace WordHighlighter
 {
     public class TestTextFragment
     {
-        public TestTextFragment(string testTextFragment,
-            ConsoleColor testTextColor)
+        public TestTextFragment(string fragment, ConsoleColor color)
         {
-            Fragment = testTextFragment;
-            Color = testTextColor;
+            Fragment = fragment;
+            Color = color;
+        }
+
+        public TestTextFragment(string fragment)
+        {
+            Fragment = fragment;
+            Color = null;
         }
 
         public string Fragment { get; private set;}
 
-        public ConsoleColor Color { get; private set;}
+        public ConsoleColor? Color { get; private set;}
     }
 }
 

@@ -10,9 +10,9 @@ namespace WordHighlighter
             string text = File.ReadAllText(args[0]);
             string[] words = StringHelpers.Split(text,
                 StringHelpers.StringSplitOptions.RemoveEmptyEntries);
-            ConsoleColor[] colors = {ConsoleColor.Blue, ConsoleColor.Cyan,
-                ConsoleColor.Gray, ConsoleColor.Green, ConsoleColor.Magenta,
-                ConsoleColor.Red, ConsoleColor.White, ConsoleColor.Yellow,
+            ConsoleColor[] colors = {ConsoleColor.Red, ConsoleColor.Cyan,
+                ConsoleColor.Yellow, ConsoleColor.Green,
+                ConsoleColor.Magenta, ConsoleColor.DarkBlue,
                 ConsoleColor.DarkMagenta, ConsoleColor.DarkCyan};
             var output = new ConsoleOutput();
             WordHighlighter wh = new WordHighlighter(output);
