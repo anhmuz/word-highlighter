@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordHighlighter", "WordHighlighting\WordHighlighter.csproj", "{E4DFA163-2B48-45BB-AC08-9B1051587187}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordHighlighter.Test", "WordHighlighter.Test\WordHighlighter.Test.csproj", "{6027FB02-630E-4720-9ACB-6BF6665E772F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordHighlighter", "WordHighlighter\WordHighlighter.csproj", "{E4DFA163-2B48-45BB-AC08-9B1051587187}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

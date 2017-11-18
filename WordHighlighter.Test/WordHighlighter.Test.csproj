@@ -43,7 +43,7 @@
     <Compile Include="TestWordHighlighter.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WordHighlighting\WordHighlighter.csproj">
+    <ProjectReference Include="..\WordHighlighter\WordHighlighter.csproj">
       <Project>{E4DFA163-2B48-45BB-AC08-9B1051587187}</Project>
       <Name>WordHighlighter</Name>
     </ProjectReference>
