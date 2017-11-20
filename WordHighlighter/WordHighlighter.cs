@@ -33,8 +33,7 @@ namespace WordHighlighter
                 foreach (ColoredWord cw in _coloredWords)
                 {
                     if (i + cw.Word.Length <= text.Length &&
-                        StringHelpers.IndexOf(
-                            text, cw.Word, i, cw.Word.Length) != -1)
+                        StringHelpers.Compare(text, cw.Word, i))
                     {
                         _output.Print(text.Substring
                             (i - numberOfUncolouredLetters,
