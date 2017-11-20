@@ -26,6 +26,9 @@ namespace WordHighlighter
 
         public void Print(string text)
         {
+            if (text == string.Empty)
+                _output.Print(string.Empty);
+
             int numberOfUncolouredLetters = 0;
             for (int i = 0; i < text.Length; i++)
             {

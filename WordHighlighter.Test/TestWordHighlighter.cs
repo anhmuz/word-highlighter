@@ -48,6 +48,22 @@ namespace WordHighlighter
                 }
             );
         }
+
+        [Test()]
+        public void TestEmptyText()
+        {
+            Test(new List<ColoredWord>
+                {
+                    new ColoredWord("a", ConsoleColor.Red),
+                    new ColoredWord("b", ConsoleColor.Blue)
+                },
+                string.Empty,
+                new List<TestTextFragment>
+                {
+                    new TestTextFragment(string.Empty)
+                });
+        }
+
         private void Test(List<ColoredWord> coloredWords, string text,
             List<TestTextFragment> expectedTextFragments)
         {
