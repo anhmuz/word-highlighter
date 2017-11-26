@@ -57,11 +57,84 @@ namespace WordHighlighter
                     new ColoredWord("a", ConsoleColor.Red),
                     new ColoredWord("b", ConsoleColor.Blue)
                 },
-                string.Empty,
+                string.Empty, 
+                new List<TestTextFragment>());
+        }
+
+        [Test()]
+        public void TestFrontColoredWord()
+        {
+            Test(new List<ColoredWord>
+                {
+                    new ColoredWord("a", ConsoleColor.Red),
+                    new ColoredWord("b", ConsoleColor.Blue)
+                },
+                "ac",
                 new List<TestTextFragment>
                 {
-                    new TestTextFragment(string.Empty)
+                    new TestTextFragment("a", ConsoleColor.Red),
+                    new TestTextFragment("c")
                 });
+        }
+
+        [Test()]
+        public void TestAdjacentColoredWords()
+        {
+            Test(new List<ColoredWord>
+                {
+                    new ColoredWord("a", ConsoleColor.Red),
+                    new ColoredWord("b", ConsoleColor.Blue)
+                },
+                "cabc",
+                new List<TestTextFragment>
+                {
+                    new TestTextFragment("c"),
+                    new TestTextFragment("a", ConsoleColor.Red),
+                    new TestTextFragment("b", ConsoleColor.Blue),
+                    new TestTextFragment("c")
+                });
+        }
+
+        [Test()]
+        public void TestEqualWords()
+        {
+            Test(new List<ColoredWord>
+                {
+                    new ColoredWord("a", ConsoleColor.Red),
+                    new ColoredWord("a", ConsoleColor.Blue)
+                },
+                "aa",
+                new List<TestTextFragment>
+                {
+                    new TestTextFragment("a", ConsoleColor.Red),
+                    new TestTextFragment("a", ConsoleColor.Red)
+                }
+            );
+        }
+
+        [Test()]
+        public void TestNullText()
+        {
+            var o = new TestOutput(new List<TestTextFragment>());
+            var wh = new WordHighlighter(o);
+            Assert.Throws<ArgumentNullException>(() => wh.Print(null));
+        }
+
+        [Test()]
+        public void TestNullColoredWord()
+        {
+            var o = new TestOutput(new List<TestTextFragment>());
+            var wh = new WordHighlighter(o);
+            Assert.Throws<ArgumentNullException>(() => wh.Add(null));
+        }
+
+        [Test()]
+        public void TestNullWord()
+        {
+            var o = new TestOutput(new List<TestTextFragment>());
+            var wh = new WordHighlighter(o);
+            Assert.Throws<ArgumentNullException>(
+                () => wh.Add(new ColoredWord(null, ConsoleColor.Red)));
         }
 
         private void Test(List<ColoredWord> coloredWords, string text,

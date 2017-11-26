@@ -21,43 +21,50 @@ namespace WordHighlighter
 
         public void Add(ColoredWord cw)
         {
+            if (cw == null)
+                throw new ArgumentNullException("cw");
+            if (cw.Word == null)
+                throw new ArgumentNullException("cw.Word");
+            
             _coloredWords.Add(cw);
         }
 
         public void Print(string text)
         {
-            if (text == string.Empty)
-                _output.Print(string.Empty);
+            if (text == null)
+                throw new ArgumentNullException("text");
 
-            int numberOfUncolouredLetters = 0;
+            int letters = 0;
             for (int i = 0; i < text.Length; i++)
             {
                 bool isPrinted = false;
                 foreach (ColoredWord cw in _coloredWords)
                 {
-                    if (i + cw.Word.Length <= text.Length &&
-                        StringHelpers.Compare(text, cw.Word, i))
+                    if (i + cw.Word.Length > text.Length ||
+                        !StringHelpers.Compare(text, cw.Word, i))
                     {
-                        _output.Print(text.Substring
-                            (i - numberOfUncolouredLetters,
-                            numberOfUncolouredLetters));
-                        _output.Print(cw.Word, cw.Color);
-                        numberOfUncolouredLetters = 0;
-                        isPrinted = true;
-                        i += cw.Word.Length - 1;
-                        break;
+                        continue;
                     }
+                    if (letters != 0)
+                    {
+                        string f = text.Substring(i - letters, letters);
+                        _output.Print(f);
+                    }
+                    _output.Print(cw.Word, cw.Color);
+                    letters = 0;
+                    isPrinted = true;
+                    i += cw.Word.Length - 1;
+                    break;
                 }
                 if (!isPrinted)
                 {
-                    numberOfUncolouredLetters++;
+                    letters++;
                 }
             }
 
-            if (numberOfUncolouredLetters != 0)
+            if (letters != 0)
             {
-                _output.Print(
-                    text.Substring(text.Length - numberOfUncolouredLetters));
+                _output.Print(text.Substring(text.Length - letters));
             }
         }
     }
