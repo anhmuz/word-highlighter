@@ -8,6 +8,12 @@ namespace WordHighlighter
         private List<ColoredWord> _coloredWords = new List<ColoredWord>();
         private readonly IOutput _output;
 
+        public enum PrintOptions
+        {
+            None = 0,
+            HighlightOnlyWords = 1
+        }
+
         public interface IOutput
         {
             void Print(string fragment, ConsoleColor color);
@@ -29,17 +35,44 @@ namespace WordHighlighter
             _coloredWords.Add(cw);
         }
 
-        public void Print(string text)
+        public void Print(string text, PrintOptions options = PrintOptions.None)
         {
             if (text == null)
                 throw new ArgumentNullException("text");
+
+            switch (options)
+            {
+            case PrintOptions.None:
+            case PrintOptions.HighlightOnlyWords:
+                break;
+            default:
+                throw new ArgumentException("options");
+            }
 
             int letters = 0;
             for (int i = 0; i < text.Length; i++)
             {
                 bool isPrinted = false;
+
+                if (options == PrintOptions.HighlightOnlyWords &&
+                    i != 0 &&
+                    !char.IsPunctuation(text[i - 1]) &&
+                    !char.IsWhiteSpace(text[i - 1]))
+                {
+                    letters++;
+                    continue;
+                }
+
                 foreach (ColoredWord cw in _coloredWords)
                 {
+                    if (options == PrintOptions.HighlightOnlyWords &&
+                        i + cw.Word.Length != text.Length &&
+                        !char.IsPunctuation(text[i + cw.Word.Length]) &&
+                        !char.IsWhiteSpace(text[i + cw.Word.Length]))
+                    {
+                        continue;
+                    }
+
                     if (i + cw.Word.Length > text.Length ||
                         !StringHelpers.Compare(text, cw.Word, i))
                     {
@@ -50,6 +83,7 @@ namespace WordHighlighter
                         string f = text.Substring(i - letters, letters);
                         _output.Print(f);
                     }
+
                     _output.Print(cw.Word, cw.Color);
                     letters = 0;
                     isPrinted = true;

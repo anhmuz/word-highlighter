@@ -137,14 +137,47 @@ namespace WordHighlighter
                 () => wh.Add(new ColoredWord(null, ConsoleColor.Red)));
         }
 
+        [Test()]
+        public void TestInvalidOptions()
+        {
+            var o = new TestOutput(new List<TestTextFragment>());
+            var wh = new WordHighlighter(o);
+            Assert.Throws<ArgumentException>(
+                () => wh.Print("aaa", (WordHighlighter.PrintOptions)200));
+        }
+
+        [Test()]
+        public void TestHighlightOnlyWords()
+        {
+            Test(new List<ColoredWord>
+                {
+                    new ColoredWord("a", ConsoleColor.Red),
+                    new ColoredWord("b", ConsoleColor.Blue)
+                },
+                "a,b a.ab?a",
+                new List<TestTextFragment>
+                {
+                    new TestTextFragment("a", ConsoleColor.Red),
+                    new TestTextFragment(","),
+                    new TestTextFragment("b", ConsoleColor.Blue),
+                    new TestTextFragment(" "),
+                    new TestTextFragment("a", ConsoleColor.Red),
+                    new TestTextFragment(".ab?"),
+                    new TestTextFragment("a", ConsoleColor.Red),
+                },
+                WordHighlighter.PrintOptions.HighlightOnlyWords);
+        }
+
+
         private void Test(List<ColoredWord> coloredWords, string text,
-            List<TestTextFragment> expectedTextFragments)
+            List<TestTextFragment> expectedTextFragments,
+            WordHighlighter.PrintOptions options = WordHighlighter.PrintOptions.None)
         {
             var o = new TestOutput(expectedTextFragments);
             var wh = new WordHighlighter(o);
             foreach (ColoredWord cw in coloredWords)
                 wh.Add(cw);
-            wh.Print(text);
+            wh.Print(text, options);
 
             // check that WordHighlighter.Print() printed all expected fragments
             Assert.AreEqual(expectedTextFragments.Count, o.CurrentIndex);
