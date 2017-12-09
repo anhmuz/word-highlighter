@@ -24,7 +24,7 @@ namespace WordHighlighter
             }
             Console.WriteLine("Enter text: ");
             string line = Console.ReadLine();
-            wh.Print(line, WordHighlighter.PrintOptions.HighlightOnlyWords);
+            wh.Print(line, WordHighlighter.PrintOptions.WholeWordsOnly);
             Console.WriteLine();
             Console.WriteLine("The end");
         }

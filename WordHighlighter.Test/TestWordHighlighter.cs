@@ -147,7 +147,7 @@ namespace WordHighlighter
         }
 
         [Test()]
-        public void TestHighlightOnlyWords()
+        public void TestHighlightWholeWordsOnly()
         {
             Test(new List<ColoredWord>
                 {
@@ -165,7 +165,7 @@ namespace WordHighlighter
                     new TestTextFragment(".ab?"),
                     new TestTextFragment("a", ConsoleColor.Red),
                 },
-                WordHighlighter.PrintOptions.HighlightOnlyWords);
+                WordHighlighter.PrintOptions.WholeWordsOnly);
         }
 
 

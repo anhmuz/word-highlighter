@@ -11,7 +11,7 @@ namespace WordHighlighter
         public enum PrintOptions
         {
             None = 0,
-            HighlightOnlyWords = 1
+            WholeWordsOnly = 1
         }
 
         public interface IOutput
@@ -43,7 +43,7 @@ namespace WordHighlighter
             switch (options)
             {
             case PrintOptions.None:
-            case PrintOptions.HighlightOnlyWords:
+            case PrintOptions.WholeWordsOnly:
                 break;
             default:
                 throw new ArgumentException("options");
@@ -54,7 +54,7 @@ namespace WordHighlighter
             {
                 bool isPrinted = false;
 
-                if (options == PrintOptions.HighlightOnlyWords &&
+                if (options == PrintOptions.WholeWordsOnly &&
                     i != 0 &&
                     !char.IsPunctuation(text[i - 1]) &&
                     !char.IsWhiteSpace(text[i - 1]))
@@ -65,7 +65,7 @@ namespace WordHighlighter
 
                 foreach (ColoredWord cw in _coloredWords)
                 {
-                    if (options == PrintOptions.HighlightOnlyWords &&
+                    if (options == PrintOptions.WholeWordsOnly &&
                         i + cw.Word.Length != text.Length &&
                         !char.IsPunctuation(text[i + cw.Word.Length]) &&
                         !char.IsWhiteSpace(text[i + cw.Word.Length]))
