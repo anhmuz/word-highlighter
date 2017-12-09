@@ -73,17 +73,14 @@ namespace WordHighlighter
                                      char[] delimiters)
         {
             if (text == null)
-                throw new ArgumentNullException("text");
-
-            switch (options)
             {
-            case StringSplitOptions.None:
-            case StringSplitOptions.RemoveEmptyEntries:
-                break;
-            default:
+                throw new ArgumentNullException("text");
+            }
+            if (!Enum.IsDefined(typeof(StringSplitOptions), options))
+            {
                 throw new ArgumentException("options");
             }
-            
+
             if (delimiters == null || delimiters.Length == 0)
             {
                 delimiters = new char[] {' '};

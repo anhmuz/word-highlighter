@@ -38,14 +38,11 @@ namespace WordHighlighter
         public void Print(string text, PrintOptions options = PrintOptions.None)
         {
             if (text == null)
-                throw new ArgumentNullException("text");
-
-            switch (options)
             {
-            case PrintOptions.None:
-            case PrintOptions.WholeWordsOnly:
-                break;
-            default:
+                throw new ArgumentNullException("text");
+            }
+            if (!Enum.IsDefined(typeof(PrintOptions), options))
+            {
                 throw new ArgumentException("options");
             }
 
