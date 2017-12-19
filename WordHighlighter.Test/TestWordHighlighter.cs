@@ -168,10 +168,63 @@ namespace WordHighlighter
                 WordHighlighter.PrintOptions.WholeWordsOnly);
         }
 
+        [Test()]
+        public void TestWordWithPunctuation()
+        {
+            Test(new List<ColoredWord>
+                {
+                    new ColoredWord("a,a.", ConsoleColor.Red),
+                    new ColoredWord("b", ConsoleColor.Blue)
+                },
+                "a,a. b",
+                new List<TestTextFragment>
+                {
+                    new TestTextFragment("a,a.", ConsoleColor.Red),
+                    new TestTextFragment(" "),
+                    new TestTextFragment("b", ConsoleColor.Blue)
+                },
+                WordHighlighter.PrintOptions.WholeWordsOnly);
+        }
+
+        [Test()]
+        public void TestWordsStartWithPunctuation()
+        {
+            Test(new List<ColoredWord>
+                {
+                    new ColoredWord(" a,a.", ConsoleColor.Red),
+                    new ColoredWord(" b,b.", ConsoleColor.Blue)
+                },
+                " a,a.@ b,b.",
+                new List<TestTextFragment>
+                {
+                    new TestTextFragment(" a,a.", ConsoleColor.Red),
+                    new TestTextFragment("@"),
+                    new TestTextFragment(" b,b.", ConsoleColor.Blue)
+                },
+                WordHighlighter.PrintOptions.WholeWordsOnly);
+        }
+
+        [Test()]
+        public void TestAdjacentWordsStartWithPunctuation()
+        {
+            Test(new List<ColoredWord>
+                {
+                    new ColoredWord(" a,a.", ConsoleColor.Red),
+                    new ColoredWord("@b,b.", ConsoleColor.Blue)
+                },
+                " a,a.@b,b.",
+                new List<TestTextFragment>
+                {
+                    new TestTextFragment(" a,a.", ConsoleColor.Red),
+                    new TestTextFragment("@b,b.", ConsoleColor.Blue)
+                },
+                WordHighlighter.PrintOptions.WholeWordsOnly);
+        }
 
         private void Test(List<ColoredWord> coloredWords, string text,
             List<TestTextFragment> expectedTextFragments,
-            WordHighlighter.PrintOptions options = WordHighlighter.PrintOptions.None)
+            WordHighlighter.PrintOptions options =
+            WordHighlighter.PrintOptions.None)
         {
             var o = new TestOutput(expectedTextFragments);
             var wh = new WordHighlighter(o);

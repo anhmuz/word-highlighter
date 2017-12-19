@@ -62,6 +62,12 @@ namespace WordHighlighter
 
                 foreach (ColoredWord cw in _coloredWords)
                 {
+                    if (i + cw.Word.Length > text.Length ||
+                        !StringHelpers.Compare(text, cw.Word, i))
+                    {
+                        continue;
+                    }
+
                     if (options == PrintOptions.WholeWordsOnly &&
                         i + cw.Word.Length != text.Length &&
                         !char.IsPunctuation(text[i + cw.Word.Length]) &&
@@ -70,11 +76,6 @@ namespace WordHighlighter
                         continue;
                     }
 
-                    if (i + cw.Word.Length > text.Length ||
-                        !StringHelpers.Compare(text, cw.Word, i))
-                    {
-                        continue;
-                    }
                     if (letters != 0)
                     {
                         string f = text.Substring(i - letters, letters);
