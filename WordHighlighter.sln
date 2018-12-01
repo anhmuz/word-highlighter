@@ -1,23 +1,41 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordHighlighter.Test", "WordHighlighter.Test\WordHighlighter.Test.csproj", "{6027FB02-630E-4720-9ACB-6BF6665E772F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordHighlighter", "WordHighlighter\WordHighlighter.csproj", "{E4DFA163-2B48-45BB-AC08-9B1051587187}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6027FB02-630E-4720-9ACB-6BF6665E772F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6027FB02-630E-4720-9ACB-6BF6665E772F}.Debug|x64.Build.0 = Debug|Any CPU
 		{6027FB02-630E-4720-9ACB-6BF6665E772F}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{6027FB02-630E-4720-9ACB-6BF6665E772F}.Debug|x86.Build.0 = Debug|Any CPU
+		{6027FB02-630E-4720-9ACB-6BF6665E772F}.Release|x64.ActiveCfg = Release|Any CPU
+		{6027FB02-630E-4720-9ACB-6BF6665E772F}.Release|x64.Build.0 = Release|Any CPU
 		{6027FB02-630E-4720-9ACB-6BF6665E772F}.Release|x86.ActiveCfg = Release|Any CPU
 		{6027FB02-630E-4720-9ACB-6BF6665E772F}.Release|x86.Build.0 = Release|Any CPU
-		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Debug|x86.ActiveCfg = Debug|x86
-		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Debug|x86.Build.0 = Debug|x86
-		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Release|x86.ActiveCfg = Release|x86
-		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Release|x86.Build.0 = Release|x86
+		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Debug|x64.Build.0 = Debug|Any CPU
+		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Debug|x86.Build.0 = Debug|Any CPU
+		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Release|x64.ActiveCfg = Release|Any CPU
+		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Release|x64.Build.0 = Release|Any CPU
+		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Release|x86.ActiveCfg = Release|Any CPU
+		{E4DFA163-2B48-45BB-AC08-9B1051587187}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {180AABC3-E1ED-4122-8E6B-E92CE106B0FF}
 	EndGlobalSection
 EndGlobal
